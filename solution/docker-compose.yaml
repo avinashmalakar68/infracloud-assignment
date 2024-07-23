@@ -1,4 +1,4 @@
-version: '3.8'
+ version: '3.8'
 services:
   csvserver:
     image: infracloudio/csvserver:latest
@@ -8,4 +8,12 @@ services:
     ports:
       - "9393:9300"
     volumes:
-      - /Users/avinash.malakar/Downloads/csvserver/inputdata:/csvserver/inputdata
+      - ./inputFile:/csvserver/inputdata
+
+  prometheus:
+    image: prom/prometheus:v2.45.2
+    ports:
+      - "9090:9090"
+    volumes:
+      - /Users/avinash.malakar/Downloads/csvserver/solution/prometheus.yml:/etc/prometheus/prometheus.yml
+
